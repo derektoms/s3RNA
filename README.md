@@ -27,7 +27,7 @@ and
 ```r
 snoRNA()
 ```
-Each of these returns a list of two data frames containing unprocessed read counts (```rraw.count```) and column data (```rcol.dat```). Analysis has been performed using the DESeq2 package, although additional approaches are possible. An example use would be to load the data, define an analysis model, compute significant differences and check the distribution of p-values. This is shown below:
+Each of these returns a list of two data frames containing unprocessed read counts (```raw.count```) and column data (```col.dat```). Analysis has been performed using the DESeq2 package, although additional approaches are possible. An example use would be to load the data, define an analysis model, compute significant differences and check the distribution of p-values. This is shown below:
 ```r
 library(s3RNA)
 library(ggplot)
@@ -43,7 +43,8 @@ local <- results(dds1, contrast=c("subcell","cytosol","nucleus"))
 sno.loc <- local[which(local$padj<0.1),]
 
 ## Check distribution of p-values
-ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
+ggplot(as(local, "data.frame"), aes(x = pvalue)) 
++ geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
 ```
 
 ---
