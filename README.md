@@ -41,9 +41,8 @@ ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.0
 sno.loc <- local[which(local$padj<0.01),]
 locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]
 df <- data.frame(sno=rownames(locTopTable),lfc=locTopTable$log2FoldChange,se=locTopTable$lfcSE)
-p <- ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2)
-p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("*log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-p
+
+ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("*log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
 ```
 ![snoRNA localization p-value histogram](s3RNA_lfc.png)
 
