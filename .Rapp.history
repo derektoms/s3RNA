@@ -1,3 +1,226 @@
+10*2^test$x1
+10*3^test$x1
+data.frame(ccd(2))->test
+test$x1 <- 10*3^test$x1
+test
+test$x1 <- 20*3^test$x1
+test
+data.frame(ccd(2))->test
+test$x1 <- 20*3^test$x1
+test
+rpe <- ccd(2, coding=list(x1~(ctm+20)/20, x2~(nic-10)/10),inscribed=TRUE)
+rpe
+rpe <- ccd(2, coding=list(x1~sqrt(ctm)/20, x2~(nic-10)/10),inscribed=TRUE)
+rpe
+rpe <- ccd(2, coding=list(x1~log(ctm)/20, x2~(nic-10)/10),inscribed=TRUE)
+rpe
+ccd(2, coding=list(x1~log(ctm)/20, x2~(nic-10)/10),inscribed=FALSE)
+ccd(2, coding=list(x1~ctm/20, x2~(nic-10)/10),inscribed=FALSE)
+ccd(2, coding=list(x1~(3^ctm)/20, x2~(nic-10)/10),inscribed=FALSE)
+ccd(2, coding=list(x1~-(3^ctm)/20, x2~(nic-10)/10),inscribed=FALSE)
+ccd(2, coding=list(x1~abs((3^ctm)/20), x2~(nic-10)/10),inscribed=FALSE)
+decode(rpe)
+rpe
+clear()
+q()
+library(VennDiagram)
+?venn.diagram
+venn.plot <- venn.diagram(#
+	list(A = 1:150, B = 121:170, C = 101:200))
+venn.plot <- venn.diagram(#
+	list(A = 1:150, B = 121:170, C = 101:200),filename=NULL)
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(list(A = 1:150, B = 121:170, C = 101:200),fill=c("red","blue","green"),filename=NULL)
+grid.draw(venn.plot)
+X10<-read.csv("~/Desktop/10_SuspensionStatic_Static_Pathways.csv")
+X20 <- read.csv("~/Desktop/20_SuspensionBioreactor_Static_Pathways.csv")
+head(X10)
+X30 <- read.csv("~/Desktop/30_SuspensionBioreactor_SuspensionStatic_Pathways.csv")
+dim(X20)
+X20[which(X20$X.log.B.H.p.value. > 1.3),]
+dim(X20[which(X20$X.log.B.H.p.value. > 1.3),])
+a20<-X20[which(X20$X.log.B.H.p.value. > 1.3),]
+a10<-X10[which(X10$X.log.B.H.p.value. > 1.3),]
+a30<-X30[which(X30$X.log.B.H.p.value. > 1.3),]
+venn.plot <- venn.diagram(list(SuSt.St=a10,SuBi.St=a20,SuBi.SuSt=a30),fill=c("red","blue","green"),filename=NULL)
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=a30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL)
+grid.draw(venn.plot)
+a10<-X10[which(X10$X.log.B.H.p.value. > 2),]
+a20<-X20[which(X20$X.log.B.H.p.value. > 2),]
+a30<-X30[which(X30$X.log.B.H.p.value. > 2),]
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=a30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL)
+grid.draw(venn.plot)
+?venn.diagram
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=a30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL,euler.d=TRUE)
+?venn.diagram
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=a30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL,euler.d=TRUE,scaled=TRUE)
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=X30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL,euler.d=TRUE,scaled=TRUE)
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=X30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL,euler.d=TRUE,scaled=FALSE)
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=X30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL,euler.d=TRUE,scaled=FALSE,rotation=2)
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=a30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL,euler.d=TRUE,scaled=FALSE,rotation=2)
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(list(SuSt.St=a10$Ingenuity.Canonical.Pathways,SuBi.St=a20$Ingenuity.Canonical.Pathways,SuBi.SuSt=a30$Ingenuity.Canonical.Pathways),fill=c("red","blue","green"),filename=NULL,euler.d=TRUE,scaled=FALSE,rotation=1)
+grid.draw(venn.plot)
+print(venn.plot)
+intersect(a10$Ingenuity.Canonical.Pathways,a20$Ingenuity.Canonical.Pathways)
+grid.draw(venn.plot)
+intersect(a10$Ingenuity.Canonical.Pathways,a20$Ingenuity.Canonical.Pathways) -> int1
+intersect(a30$Ingenuity.Canonical.Pathways,int1) -> int2
+int2
+a10<-X10[which(X10$X.log.B.H.p.value. 2),]#
+a20<-X20[which(X20$X.log.B.H.p.value. 2),]#
+a30<-X30[which(X30$X.log.B.H.p.value. 2),]#
+pathways <- list("Suspension Static vs. Static"=a10$Ingenuity.Canonical.Pathways,"Suspension Bioreactor vs. Static"=a20$Ingenuity.Canonical.Pathways,"Suspension Bioreactor vs. Suspension Static"=a30$Ingenuity.Canonical.Pathways)#
+''
+a10<-X10[which(X10$X.log.B.H.p.value.>2),]#
+a20<-X20[which(X20$X.log.B.H.p.value.>2),]#
+a30<-X30[which(X30$X.log.B.H.p.value.>2),]
+pathways <- list("Suspension Static vs. Static"=a10$Ingenuity.Canonical.Pathways,"Suspension Bioreactor vs. Static"=a20$Ingenuity.Canonical.Pathways,"Suspension Bioreactor vs. Suspension Static"=a30$Ingenuity.Canonical.Pathways)
+intersect(pathways)
+Intersect <- function (x) {  #
+  # Multiple set version of intersect#
+  # x is a list#
+  if (length(x) == 1) {#
+    unlist(x)#
+  } else if (length(x) == 2) {#
+    intersect(x[[1]], x[[2]])#
+  } else if (length(x) > 2){#
+    intersect(x[[1]], Intersect(x[-1]))#
+  }#
+}
+Intersect(pathways)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL)#
+grid.draw(venn.plot)
+pathways <- list("Susp. Static vs. Static"=a10$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Static"=a20$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Susp. Static"=a30$Ingenuity.Canonical.Pathways)#
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL)#
+grid.draw(venn.plot)
+grid.draw(venn.plot)
+a30<-X30[which(X30$X.log.B.H.p.value.>1),]
+pathways <- list("Susp. Static vs. Static"=a10$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Static"=a20$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Susp. Static"=a30$Ingenuity.Canonical.Pathways)#
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL)#
+grid.draw(venn.plot)
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL,scaled=TRUE)
+grid.draw(venn.plot)
+a30<-X30[which(X30$X.log.B.H.p.value.>2),]
+pathways <- list("Susp. Static vs. Static"=a10$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Static"=a20$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Susp. Static"=a30$Ingenuity.Canonical.Pathways)#
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL)#
+grid.draw(venn.plot)
+?venn.plot
+?venn.diagram
+pathways <- list("Susp. Static vs. Static"=a10$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Static"=a20$Ingenuity.Canonical.Pathways,"Susp. Bioreactor vs. Susp. Static"=a30$Ingenuity.Canonical.Pathways)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL,cat.pos=c(2,5,10))
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL,cat.pos=c(11,5,10))
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL,cat.pos=c(1,1,1))
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL,cat.pos=c(15,30,300))
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL,cat.pos=c(330,30,220))
+grid.draw(venn.plot)
+venn.plot <- venn.diagram(pathways,fill=c("red","blue","green"),filename=NULL,cat.pos=c(330,30,180))
+grid.draw(venn.plot)
+q()
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+dat<-read.csv("~/Desktop/2019-11-21 H1 RPE diff_alamar blue/long form-Table 1.csv")
+head(dat)
+dat<-dat[,1:3]
+head(dat)
+ggplot(data=dat,aes(x=time,y=RFU))+geom_boxplot(aes(colour=well))
+ggplot(data=dat%>%group_by(well),aes(x=time,y=RFU))+geom_boxplot(aes(colour=well))
+ggplot(data=dat%>%group_by(well),aes(x=time,y=RFU))+geom_point(aes(colour=well))
+ggplot(data=dat%>%group_by(well),aes(x=time,y=RFU))+geom_point(aes(colour=well))+geom+jitter()
+ggplot(data=dat%>%group_by(well),aes(x=time,y=RFU))+geom_point(aes(colour=well))+geom_jitter()
+ggplot(data=dat%>%group_by(well),aes(x=time,y=RFU))+geom_jitter(aes(colour=well))
+dat %>% group_by(well)
+dat %>% group_by(well) %>% summarize(mean.RFU=mean(RFU),-time)
+dat %>% group_by(well) %>% summarize(mean.RFU=mean(RFU))
+dat %>% group_by(well,time) %>% summarize(mean.RFU=mean(RFU))
+dat %>% group_by(well,time) %>% summarize(mean.RFU=mean(RFU),sd=sd(RFU))
+dat %>% group_by(well,time) %>% summarize(mean.RFU=mean(RFU),sd=sd(RFU)) -> dat2
+ggplot(dat2,aes(x=time,y=mean.RFU))+geom_point(aes(colour=group))
+ggplot(dat2,aes(x=time,y=mean.RFU))+geom_point(aes(colour=well))
+ggplot(dat2,aes(x=time,y=mean.RFU))+geom_jitter(aes(colour=well))
+library(RColorBrewer)
+??melt
+??spread
+stocks <- data.frame(#
+  time = as.Date('2009-01-01') + 0:9,#
+  X = rnorm(10, 0, 1),#
+  Y = rnorm(10, 0, 2),#
+  Z = rnorm(10, 0, 4)#
+)
+stocks
+stocksm <- stocks %>% gather(stock, price, -time)#
+stocksm %>% spread(stock, price)#
+stocksm %>% spread(time, price)
+stocksm <- stocks %>% gather(stock, price, -time)
+stocksm
+data2
+dat2
+dat2%>%spread(mean.RFU,time,-sd)
+dat2%>%spread(mean.RFU,time)
+dat2%>%spread(time,mean.RFU)
+dat2%>%spread(time,mean.RFU,-sd)
+dat2[,-c("sd")]%>%spread(time,mean.RFU)
+dat2[,"sd"]%>%spread(time,mean.RFU)
+dat2[,-3]%>%spread(time,mean.RFU)
+dat2[,-4]%>%spread(time,mean.RFU)
+dat2[,-4]%>%spread(time,mean.RFU)%>%filter(well!="BLANK")
+dat2[,-4]%>%spread(time,mean.RFU)%>%filter(well!="BLANK"|well!="CONTROL")
+dat2[,-4]%>%spread(time,mean.RFU)%>%filter(well!="BLANK"&well!="CONTROL")
+dat2[,-4]%>%spread(time,mean.RFU)%>%filter(well!="BLANK"&well!="CONTROL") -> dat3
+dat3
+dat3%>%mutate(rate1=`1`-`0`,rate2=`2`-`1`)
+dat3%>%mutate(rate1=`1`-`0`,rate2=`2`-`1`)->dat4
+ggplot(data=dat4,aes(x=well,y=rate2))+geom_point()
+ggplot(data=dat4,aes(x=well,y=rate2))+geom_point()+geom_point(aes(y=rate2))
+ggplot(data=dat4,aes(x=well,y=rate2))+geom_point()+geom_point(aes(y=rate1))
+ggplot(data=dat4,aes(x=well,y=rate2))+geom_point()+geom_point(aes(y=rate1),shape=23)
+ggplot(data=dat4,aes(x=well,y=rate2))+geom_point(shape=7)+geom_point(aes(y=rate1),shape=23)
+library(rsm)
+mp<-read.csv("~/Documents/Design of Experiments/RPE differentiation/H1-RPE-diff.csv")
+mp
+ccd(2)
+ccd(2,coding=list(x1=(ctm-5)/3))
+ccd(2,coding=list(x1=("ctm"-5)/3))
+rpe <- ccd(2, coding=list(x1~(ctm-20)/20, x2~(nic-10)/10),inscribed=TRUE)
+rpe
+rpe$rate1<-dat4$rate1
+rpe
+rpe.rsm<-rsm(rate1~SO(ctm,nic),data=rpe)
+rpe.rsm<-rsm(rate1~SO(x1,x2),data=rpe)
+summary(rpe.rsm)
+persp(rpe.rsm,~x1*x2)
+par(mfrow=c(1,2))#
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"))
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=70)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=70,cex=1)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=70,cha=1)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=70)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.lab=1)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.lab=2)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.lab=.4)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.axes=.4)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.axis=.4)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.axis=1)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.axis=.6)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=110,cex.axis=.6,cex.lab=.6)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,mgp=2)
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,mgp=c(3,3,3))
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,mgp=c(1,1,1))
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,mgp=c(1,2,1))
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,mgp=c(2,2,1))
+persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,mgp=c(2,2,2))
 persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,ylog=TRUE)
 persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,ylog=FALSE)
 persp(rpe.rsm, ~x1*x2, at=xs(rpe.rsm), contours = "col", col=rainbow(40),zlab="rate1 (a.u. / a.t.)",xlabs=c("chetomin, nM","niacinamide, mM"),theta=40,cex.axis=.6,cex.lab=.6,zlab="")
@@ -2724,458 +2947,17 @@ load("/Users/derektoms/Desktop/shiny-server/receptoR/data/final_processed_data_2
 load("/Users/derektoms/Desktop/shiny-server/receptoR/data/final_processed_data_20190731-2241.rda")
 load("/Users/derektoms/Desktop/shiny-server/receptoR/data/final_processed_data_20190731-2252.rda")
 q()
-library(devtools)#
-library(dplyr)#
-library(tidyr)#
-library(stringr)#
-library(hexbin)#
-library(rnaseqGene) # loads 'ggplot2' and 'RColorBrewer'#
-library(DESeq2)#
-library(vsn)#
-library(data.table)#
-library(VennDiagram)#
-library(ggplots2)#
-library(BioCircos)#
-library(RColorBrewer)#
-library(rmarkdown)#
-library(EnhancedVolcano)#
-##
-# miRReads <- list(raw.count = miwi, col.dat = micoldata)#
-# snoRReads <- list(raw.count = all.sno.reads, col.dat = samples)#
-# save(miRReads, snoRReads,file="raw-miR-snoR.rda")#
-##
-load("~/Documents/Manuscripts/Nuclear microRNA/raw-miR-snoR.rda")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-desat = function(cols, sat=0.5) {#
-    X <- diag(c(1, sat, 1)) %*% rgb2hsv(col2rgb(cols))#
-    hsv(X[1,], X[2,], X[3,])#
-}#
-#
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-# Colour space#
-set1<-brewer.pal(4,"Set1")#
-lite1<-brewer.pal(4,"Pastel1")#
-ann_col <- list(size=c(small=set1[1],large=set1[2]),subcell=c(nucleus=set1[3],cytosol=set1[4]))#
-grad_col <- colorRampPalette(brewer.pal(9, "YlOrBr"))(100)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-mirMat <- DESeqDataSetFromMatrix(countData = miRReads$raw.count, colData = miRReads$col.dat, design=~size*subcell)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-mirMat$group <- factor(paste0(mirMat$size,mirMat$subcell)) # for use in group-base classification#
-mirMat$Batch <- factor(mirMat$Batch)#
-design(mirMat)<-~size*subcell+Batch ## final model#
-#
-mirMat ## data set object#
-# class: DESeqDataSet#
-# dim: 416 16#
-# metadata(1): version#
-# assays(1): counts#
-# rownames(416): ssc-let-7a ssc-let-7c ... ssc-miR-chr2_15576#
-#   ssc-miR-chr3_17659#
-# rowData names(0):#
-# colnames(16): cs1 cl2 ... nl4 nl2#
-# colData names(6): X size ... Batch group#
-## Multi-factorial     dds1#
-dds1<-DESeq(mirMat)#
-#
-## Group-based         dds2#
-### As recommended online, use size and subcellular localization to make groups for contrasts#
-#
-design(mirMat) <- ~group+Batch#
-dds2<-DESeq(mirMat)#
-#
-## Full linear model, two factor#
-sizes<-results(dds1, contrast=c("size","small","large"))#
-locals<-results(dds1, contrast=c("subcell","cytosol","nucleus"))#
-#
-## Specific groupings (comparable to Ram's analysis)#
-nuc.sizes<-results(dds2, contrast=c("group","largenucleus","smallnucleus")) # 7; we got 378 back!#
-cyt.sizes<-results(dds2, contrast=c("group","largecytosol","smallcytosol")) # 0#
-lg.local<-results(dds2, contrast=c("group","largenucleus","largecytosol")) # 83#
-sm.local<-results(dds2, contrast=c("group","smallnucleus","smallcytosol")) # 101#
-#
-sizes[which(sizes$padj<0.1),] # there are no significant values! most are .99#
-locals[which(locals$padj<0.1),] # but plenty of significant differences here! 83 with padj<0.1#
-#
-s<-locals#
-s[which(s$padj<0.1),] # replace s to calculate for the comparisons above#
-summary(s)#
-## Check distribution of p-values#
-ggplot(as(s, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-pcadat<-DESeq2::plotPCA(mirRLOG,intgroup=c("size","subcell","Batch"),returnData=TRUE)#
-percentVar <- round(100 * attr(pcadat, "percentVar"))#
-ggplot(pcadat, aes(x = PC1, y = PC2, color = size, shape = subcell)) +#
-  geom_point(size =3) +#
-  xlab(paste0("PC1: ", percentVar[1], "% variance")) +#
-  ylab(paste0("PC2: ", percentVar[2], "% variance")) +#
-  coord_fixed() + scale_shape_discrete(name="subcellular \nlocation",labels=c("nuclear","cytoplasmic")) + scale_color_manual(name="GC size",values=ann_col$size) + labs(title="Principle component analysis")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-mirLOG <- normTransform(dds1)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-pcadat<-DESeq2::plotPCA(mirRLOG,intgroup=c("size","subcell","Batch"),returnData=TRUE)#
-percentVar <- round(100 * attr(pcadat, "percentVar"))#
-ggplot(pcadat, aes(x = PC1, y = PC2, color = size, shape = subcell)) +#
-  geom_point(size =3) +#
-  xlab(paste0("PC1: ", percentVar[1], "% variance")) +#
-  ylab(paste0("PC2: ", percentVar[2], "% variance")) +#
-  coord_fixed() + scale_shape_discrete(name="subcellular \nlocation",labels=c("nuclear","cytoplasmic")) + scale_color_manual(name="GC size",values=ann_col$size) + labs(title="Principle component analysis")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-mirRLOG <-rlog(dds1,blind=FALSE)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-pcadat<-DESeq2::plotPCA(mirRLOG,intgroup=c("size","subcell","Batch"),returnData=TRUE)#
-percentVar <- round(100 * attr(pcadat, "percentVar"))#
-ggplot(pcadat, aes(x = PC1, y = PC2, color = size, shape = subcell)) +#
-  geom_point(size =3) +#
-  xlab(paste0("PC1: ", percentVar[1], "% variance")) +#
-  ylab(paste0("PC2: ", percentVar[2], "% variance")) +#
-  coord_fixed() + scale_shape_discrete(name="subcellular \nlocation",labels=c("nuclear","cytoplasmic")) + scale_color_manual(name="GC size",values=ann_col$size) + labs(title="Principle component analysis")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-snoMat2 <- DESeqDataSetFromMatrix(countData = snoRReads$raw.count, colData = snoRReads$col.dat, design=~size+batch)#
-#
-## snoRNA comparison, combining all localizations dds2s#
-dds2s <- DESeq(snoMat2)#
-sno.size2 <- results(dds2s,contrast = c("size","small","large"))#
-sno.size2[which(sno.size2$padj<0.1),]
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-design(snoMat2) <- ~size*subcell+batch#
-dds3s<-DESeq(snoMat2)#
-resultsNames(dds3s)#
-# [1] "Intercept" "size_small_vs_large" "local_nuc_vs_cyt"#
-# [4] "batch_2_vs_1" "sizesmall.localnuc"#
-#
-# sno.size.subcell <- results(dds3s,contrast = "sizesmall.subcellnuc")#
-# sno.size.subcell[which(sno.size.subcell$padj<0.1),] # no interaction term either#
-#
-design(snoMat2) <- ~subcell+batch#
-dds4s<-DESeq(snoMat2)#
-sno.subcell <- results(dds4s, contrast = c("subcell","nuc","cyt"))#
-sno.subcell[which(sno.subcell$padj<0.1),] #112#
-ggplot(as(sno.subcell, "data.frame"), aes(x = padj)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0) # 112 DEGs
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-sno.subcell <- results(dds3s, contrast = c("subcell","nuc","cyt"))#
-sno.subcell[which(sno.subcell$padj<0.1),] #112
-sno.subcell
-dds3s
-resultsNames(dds3s)
-resultsNames(dds4s)
-design(snoMat2) <- ~subcell+batch#
-dds4s<-DESeq(snoMat2)#
-sno.subcell <- results(dds3s, contrast = c("subcell","nuc","cyt"))#
-sno.subcell[which(sno.subcell$padj<0.1),] #112#
-ggplot(as(sno.subcell, "data.frame"), aes(x = padj)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0) # 112 DEGs#
-locres1s <- lfcShrink(dds4s, coef="subcell_nucleus_vs_cytosol", type="apeglm")
-resultsNames(dds4s)
-resultsNames(dds3s)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-snoMat <- DESeqDataSetFromMatrix(countData = snoRReads$raw.count, colData = snoRReads$col.dat, design=~size+batch)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-snoMat$group <- factor(paste0(snoMat$size,snoMat$subcell)) # for use in group-base classification
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-snoMat$Batch <- factor(snoMat$batch)
-snoMat
-snoMat$Batch
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-design(snoMat)<-~size*subcell+batch ## final model
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-ddsno <- DESeq(snoMat)
-resultsNames(ddsno)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-design(snoMat) <- ~group+batch#
-ddsnog<-DESeq(snoMat)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-sno.subcell <- results(ddsno, contrast = c("subcell","nuc","cyt"))
-resultsNames(ddsno)
-sizes<-results(dds1, contrast=c("size","small","large"))
-sizesno<-results(ddsno, contrast=c("size","small","large"))
-ddsno
-ddsno$subcell
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-sno.size<-results(ddsno, contrast=c("size","small","large"))#
-sno.subcell <- results(ddsno, contrast = c("subcell","nucleus","cytosol"))
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-sno.subcell[which(sno.subcell$padj<0.1),] #112
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-ggplot(as(sno.subcell, "data.frame"), aes(x = padj)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0) # 112 DEGs#
-locres1s <- lfcShrink(ddsno, coef="subcell_nucleus_vs_cytosol", type="apeglm")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-DESeq2::plotMA(locres1s, ylim = c(-2.8, 2.8), main="Relative abundance of snoRNA in the nucleus")
-sno.nuc.sizes<-results(ddsnog, contrast=c("group","largenuc","smallnuc")) # 0#
-sno.cyt.sizes<-results(ddsnog, contrast=c("group","largecyt","smallcyt")) # 0#
-sno.lg.local<-results(ddsnog, contrast=c("group","largenuc","largecyt")) # 66#
-sno.sm.local<-results(ddsnog, contrast=c("group","smallnuc","smallcyt")) # 71
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-sno.nuc.sizes<-results(ddsnog, contrast=c("group","largenucleus","smallnucleus")) # 0#
-sno.cyt.sizes<-results(ddsnog, contrast=c("group","largecytosol","smallcytosol")) # 0#
-sno.lg.local<-results(ddsnog, contrast=c("group","largenucleus","largecytosol")) # 66#
-sno.sm.local<-results(ddsnog, contrast=c("group","smallnucleus","smallcytosol")) # 71
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-s<-sno.sm.local#
-s[which(s$padj<0.1),] # replace s to calculate for the comparisons above
-s<-sno.cyt.sizes
-s[which(s$padj<0.1),] # replace s to calculate for the comparisons above
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-DESeq2::plotMA(locres1s, ylim = c(-2.8, 2.8), main="Relative abundance of snoRNA in the nucleus")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-DESeq2::plotMA(locres1s, ylim = c(-2.8, 2.8), main="Relative abundance of snoRNA in the nucleus")#
-with(locres1s[sno.lgV,], {#
-    points(baseMean, log2FoldChange, col=ann_col$size[2], lwd=2)#
-    text(baseMean, log2FoldChange, sno.lgV, pos=3, col=ann_col$size[2],cex=0.5)#
-})#
-with(locres1s[sno.smV,], {#
-    points(baseMean, log2FoldChange, col=ann_col$size[1], lwd=2)#
-    text(baseMean, log2FoldChange, sno.smV, pos=3, col=ann_col$size[1],cex=0.5)#
-})
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-keyvals <- rep("grey",nrow(locres1s))#
-names(keyvals) <- rep('similar expression',nrow(locres1s))#
-#
-keyvals[which(locres1s$log2FoldChange > 1)] <- ann_col$subcell[1]#
-names(keyvals)[which(locres1s$log2FoldChange > 1)] <- 'nucleus-enriched'#
-#
-keyvals[which(locres1s$log2FoldChange < -1)] <- ann_col$subcell[2]#
-names(keyvals)[which(locres1s$log2FoldChange < -1)] <- 'cytoplasm-enriched'#
-#
-## optionally add difference of LGC and SGC (i.e. genes that only differ in their subcellular location in one group)#
-keyvals[which(rownames(locres1s) %in% pull(lg.loc))] <- ann_col$size[2]#
-names(keyvals)[which(rownames(locres1s) %in% pull(lg.loc))] <- 'size: LGC'#
-keyvals[which(rownames(locres1s) %in% pull(sm.loc))] <- ann_col$size[1]#
-names(keyvals)[which(rownames(locres1s) %in% pull(sm.loc))] <- 'size: SGC'#
-#
-## Now adding shape information based on the snoRNA class#
-snoRAnnotate <- read.csv(file = "piRNA_snoRNA/snoRNA-RFAM.csv", header = TRUE, stringsAsFactors = FALSE)#
-sno.names <- substring(snoRAnnotate$x,3)#
-CD <- snoRAnnotate$x[which(snoRAnnotate$class=="C/D")]#
-HACA <- snoRAnnotate$x[which(snoRAnnotate$class=="H/ACA")]#
-#
-keyvals.shape <- rep(16,nrow(locres1s))#
-names(keyvals.shape) <- rep('uncategorized',nrow(locres1s))#
-#
-keyvals.shape[which(rownames(locres1s) %in% CD)] <- 17#
-names(keyvals.shape)[which(rownames(locres1s) %in% CD)] <- 'C/D'#
-#
-keyvals.shape[which(rownames(locres1s) %in% HACA)] <- 15#
-names(keyvals.shape)[which(rownames(locres1s) %in% HACA)] <- 'H/ACA'#
-#
-# keyvals.shape[which(rownames(locres1s) %in% pull(lg.loc))] <- 1#
-# names(keyvals.shape)[which(rownames(locres1s) %in% pull(lg.loc))] <- 'size: LGC'#
-# keyvals.shape[which(rownames(locres1s) %in% pull(sm.loc))] <- 1#
-# names(keyvals.shape)[which(rownames(locres1s) %in% pull(sm.loc))] <- 'size: SGC'#
-EnhancedVolcano(locres1s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-locres2s <- lfcShrink(ddsnog, coef="group", type="apeglm")
-resultsNames(ddsnog)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-locres2s <- lfcShrink(ddsnog, coef="size_small_vs_large", type="apeglm")
-ddsnog
-resultsNames(ddsnog)
-resultsNames(ddsno)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-locres2s <- lfcShrink(ddsno, coef="size_small_vs_large", type="apeglm")
-results(ddsnog)
-results(ddsnog,contrast=0)
-results(ddsnog,contrast=1)
-results(ddsnog,contrast=c(1,1,0,0,0))
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-EnhancedVolcano(locres2s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-EnhancedVolcano(locres1s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-s<-sno.sm.local#
-s[which(s$padj<0.1),] # replace s to calculate for the comparisons above
-s<-sno.lg.local#
-s[which(s$padj<0.1),] # replace s to calculate for the comparisons above
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-locres3s <- lfcShrink(ddsnog, coef="group_largenucleus_vs_largecytosol",type="apeglm")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-EnhancedVolcano(locres3s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-locres4s <- lfcShrink(ddsnog, coef="group_smallnucleus_vs_smallcytosol",type="apeglm")
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-design(snoMat) <- ~group+Batch
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-ddsnog<-DESeq(snoMat)
-resultsNames(ddsnog)
-design(snoMat)
-sno.size
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-locres4s <- lfcShrink(ddsnog, type="apeglm")
-?lfcShring
-?lfcShrink
-locres4s <- lfcShrink(ddsnog, res=results(ddsnog),type="apeglm")
-results(ddsnog)
-design(snoMat) <- ~Batch+group
-ddsnog<-DESeq(snoMat)
-results(ddsnog)
-resultsNames(ddsnog)
-snoMat$Group
-snoMat$Groups
-snoMat$group
-snoMat$batch
-snoMat$Batch
-design(snoMat) <- ~subcell+batch#
-ddsno2<-DESeq(snoMat)
-locres5s <- lfcShrink(ddsno2, coef="subcell_nucleus_vs_cytosol", type="apeglm")
-EnhancedVolcano(locres5s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-s<-sno.sm.local#
-s<-s[which(s$padj<0.1),]#
-# s<-s[which(s$log2FoldChange>0),] # nuclear enriched#
-# s<-s[which(s$log2FoldChange<0),] # cytoplasm enriched#
-sno.smV<-row.names(s)#
-#
-s<-sno.lg.local#
-s<-s[which(s$padj<0.1),]#
-sno.lgV<-row.names(s)
-DESeq2::plotMA(locres1s, ylim = c(-2.8, 2.8), main="Relative abundance of snoRNA in the nucleus")#
-with(locres1s[sno.lgV,], {#
-    points(baseMean, log2FoldChange, col=ann_col$size[2], lwd=2)#
-    text(baseMean, log2FoldChange, sno.lgV, pos=3, col=ann_col$size[2],cex=0.5)#
-})#
-with(locres1s[sno.smV,], {#
-    points(baseMean, log2FoldChange, col=ann_col$size[1], lwd=2)#
-    text(baseMean, log2FoldChange, sno.smV, pos=3, col=ann_col$size[1],cex=0.5)#
-})
-sno.lgV
-sno.smV
-venn.diagram(x=list("SGC"=sno.smV,"LGC" = sno.lgV),fill=ann_col$size,filename=NULL) -> venny#
-grid.draw(venny)#
-anti_join(tbl_df(sno.smV),tbl_df(sno.lgV)) # identifies different miRNA (depends on the order of the tbl)
-grid.draw(venny)
-sm.loc <- anti_join(tbl_df(sno.smV),tbl_df(sno.lgV))#
-lg.loc <- anti_join(tbl_df(sno.lgV),tbl_df(sno.smV))
-lg.loc
-sm.loc
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-keyvals <- rep("grey",nrow(locres1s))#
-names(keyvals) <- rep('similar expression',nrow(locres1s))
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-keyvals[which(rownames(locres1s) %in% pull(lg.loc))] <- ann_col$size[2]#
-names(keyvals)[which(rownames(locres1s) %in% pull(lg.loc))] <- 'size: LGC'#
-keyvals[which(rownames(locres1s) %in% pull(sm.loc))] <- ann_col$size[1]#
-names(keyvals)[which(rownames(locres1s) %in% pull(sm.loc))] <- 'size: SGC'
-setwd('/Users/derektoms/Documents/Manuscripts/Nuclear microRNA')
-snoRAnnotate <- read.csv(file = "piRNA_snoRNA/snoRNA-RFAM.csv", header = TRUE, stringsAsFactors = FALSE)#
-sno.names <- substring(snoRAnnotate$x,3)#
-CD <- snoRAnnotate$x[which(snoRAnnotate$class=="C/D")]#
-HACA <- snoRAnnotate$x[which(snoRAnnotate$class=="H/ACA")]#
-#
-keyvals.shape <- rep(16,nrow(locres1s))#
-names(keyvals.shape) <- rep('uncategorized',nrow(locres1s))#
-#
-keyvals.shape[which(rownames(locres1s) %in% CD)] <- 17#
-names(keyvals.shape)[which(rownames(locres1s) %in% CD)] <- 'C/D'#
-#
-keyvals.shape[which(rownames(locres1s) %in% HACA)] <- 15#
-names(keyvals.shape)[which(rownames(locres1s) %in% HACA)] <- 'H/ACA'#
-#
-# keyvals.shape[which(rownames(locres1s) %in% pull(lg.loc))] <- 1#
-# names(keyvals.shape)[which(rownames(locres1s) %in% pull(lg.loc))] <- 'size: LGC'#
-# keyvals.shape[which(rownames(locres1s) %in% pull(sm.loc))] <- 1#
-# names(keyvals.shape)[which(rownames(locres1s) %in% pull(sm.loc))] <- 'size: SGC'#
-EnhancedVolcano(locres3s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-EnhancedVolcano(locres5s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-EnhancedVolcano(locres5s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1.5, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-miRReads$raw.count
-class(miRReads$raw.count)
-class(miRReads$col.dat)
-miRNA <- function() {#
- return  miRReads#
-}
-miRNA <- function() {#
- return(miRReads)#
-}
-miRNA
-miRNA()
-?rnaseqGene
-??rnaseqGene
-class(miRReads)
-snoRNA <- function() {#
- return(snoRReads)#
-}
-snoRNA()
-sno_mat <- snoRNA()#
-sno <- DESeqDataSetFromMatrix(countData = sno_mat$raw.count, colData = sno_mat$col.dat, design=~size*subcell+batch)#
-#
-sno.d <- DESeq(sno)#
-#
-## Full linear model, two factors#
-size <- results(dds1, contrast=c("size","small","large"))#
-local <- results(dds1, contrast=c("subcell","cytosol","nucleus"))#
-sno.loc <- local[which(local$padj<0.1),]#
-#
-## Check distribution of p-values#
-ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
-sno.loc <- local[which(local$padj<0.01),]
-sno.loc
-locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]#
-df <- data.frame(sno=rownames(lgTopTable),lfc=lgTopTable$log2FoldChange,se=lgTopTable$lfcSE)#
-ggplot(df,aes(x=reorder(labs,lfc, sum),y=lfc))+geom_col(aes(fill=reorder(labs,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) + scale_fill_manual(values=nuc_col) + coord_flip() + labs(title="LGC", x="", y=expression(log["2"]~"fold change (relative to nucleus)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]#
-df <- data.frame(sno=rownames(locTopTable),lfc=locTopTable$log2FoldChange,se=locTopTable$lfcSE)#
-ggplot(df,aes(x=reorder(labs,lfc, sum),y=lfc))#
-+ geom_col(aes(fill=reorder(labs,lfc, sum)),colour="black") #
-+ geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) #
-+ scale_fill_manual(values=nuc_col) + coord_flip() #
-+ labs(title="LGC", x="", y=expression(log["2"]~"fold change (relative to nucleus)")) #
-+ theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-ggplot(df,aes(x=reorder(labs,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(labs,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) + scale_fill_manual(values=nuc_col) + coord_flip() + labs(title="LGC", x="", y=expression(log["2"]~"fold change (relative to nucleus)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-ggplot(df,aes(x=reorder(labs,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(labs,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) + coord_flip() + labs(title="LGC", x="", y=expression(log["2"]~"fold change (relative to nucleus)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-df
-sno.loc
-size <- results(sno.d, contrast=c("size","small","large"))#
-local <- results(sno.d, contrast=c("subcell","cytosol","nucleus"))
-ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
-sno.loc <- local[which(local$padj<0.01),]#
-locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]#
-df <- data.frame(sno=rownames(locTopTable),lfc=locTopTable$log2FoldChange,se=locTopTable$lfcSE)#
-ggplot(df,aes(x=reorder(labs,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(labs,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) + coord_flip() + labs(title="LGC", x="", y=expression(log["2"]~"fold change (relative to nucleus)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-df
-ggplot(df,aes(x=reorder(labs,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(labs,lfc, sum)),colour="black")
-ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(labs,lfc, sum)),colour="black")
-ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black")
-ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) + coord_flip() + labs(title="LGC", x="", y=expression(log["2"]~"fold change (relative to nucleus)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-snoRAnnotate <- read.csv(file = "piRNA_snoRNA/snoRNA-RFAM.csv", header = TRUE, stringsAsFactors = FALSE)#
-sno.names <- substring(snoRAnnotate$x,3)#
-CD <- snoRAnnotate$x[which(snoRAnnotate$class=="C/D")]#
-HACA <- snoRAnnotate$x[which(snoRAnnotate$class=="H/ACA")]#
-#
-keyvals.shape <- rep(16,nrow(locres1s))#
-names(keyvals.shape) <- rep('uncategorized',nrow(locres1s))#
-#
-keyvals.shape[which(rownames(locres1s) %in% CD)] <- 17#
-names(keyvals.shape)[which(rownames(locres1s) %in% CD)] <- 'C/D'#
-#
-keyvals.shape[which(rownames(locres1s) %in% HACA)] <- 15#
-names(keyvals.shape)[which(rownames(locres1s) %in% HACA)] <- 'H/ACA'#
-#
-# keyvals.shape[which(rownames(locres1s) %in% pull(lg.loc))] <- 1#
-# names(keyvals.shape)[which(rownames(locres1s) %in% pull(lg.loc))] <- 'size: LGC'#
-# keyvals.shape[which(rownames(locres1s) %in% pull(sm.loc))] <- 1#
-# names(keyvals.shape)[which(rownames(locres1s) %in% pull(sm.loc))] <- 'size: SGC'#
-EnhancedVolcano(locres3s, lab=sno.names, x='log2FoldChange', y='pvalue', xlim=c(-3,3), FCcutoff = 1, colCustom=keyvals, shapeCustom=keyvals.shape, title = "Differences in snoRNA localization", transcriptLabSize = 4.0, transcriptPointSize =2, drawConnectors=TRUE, colConnectors="grey50", legendPosition='right', legendLabSize = 10, legendIconSize = 3.0)
-sno.loc <- local[which(local$padj<0.01),]#
-locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]#
-df <- data.frame(sno=rownames(locTopTable),lfc=locTopTable$log2FoldChange,se=locTopTable$lfcSE)#
-p <- ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2)#
-p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression(log["2"]~"fold change (relative to cytoplasm)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")#
-p
-p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("~log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")#
-p
-p <- ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2)#
-p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("~log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")#
-p
-p <- ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2)#
-p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment (".log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")#
-p
-p <- ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2)#
-p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("*log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")#
-p
+library(devtools)
+devtools::install_github("derektoms/s3RNA")
+library(s3RNA)
+miRReads
+?microRNA
+?miRNA
+?miRReads
+datasets
+?data
+data
 data()
-mtcars
-faithful
-morley
-smiths
-kidney
-miRReads$col.dat
-snoRReads$col.dat
 sno <- DESeqDataSetFromMatrix(countData = snoRReads$raw.count, colData = snoRReads$col.dat, design=~size*subcell+batch)#
 #
 ## Full linear model, two factors#
@@ -3187,38 +2969,38 @@ local <- results(sno.d, contrast=c("subcell","cytosol","nucleus"))#
 ## Check distribution of p-values#
 ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)#
 #
-## Now plot the expression of those snoRNA with significant differences#
-sno.loc <- local[which(local$padj<0.01),]#
-locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]#
-df <- data.frame(sno=rownames(locTopTable),lfc=locTopTable$log2FoldChange,se=locTopTable$lfcSE)#
-p <- ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2)#
-p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("*log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")#
-p
-ggsave("s3RNA_lfc.png")
+snoRNA localization p-value histogram
+library(DESeq2)
+sno <- DESeqDataSetFromMatrix(countData = snoRReads$raw.count, colData = snoRReads$col.dat, design=~size*subcell+batch)#
+#
+## Full linear model, two factors#
+sno.d <- DESeq(sno)#
+#
+size <- results(sno.d, contrast=c("size","small","large"))#
+local <- results(sno.d, contrast=c("subcell","cytosol","nucleus"))#
+#
+## Check distribution of p-values#
+ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)#
+#
+snoRNA localization p-value histogram
+library(ggplot2)#
+library(DESeq2)#
+#
+sno <- DESeqDataSetFromMatrix(countData = snoRReads$raw.count, colData = snoRReads$col.dat, design=~size*subcell+batch)#
+#
+## Full linear model, two factors#
+sno.d <- DESeq(sno)#
+#
+size <- results(sno.d, contrast=c("size","small","large"))#
+local <- results(sno.d, contrast=c("subcell","cytosol","nucleus"))#
+#
+## Check distribution of p-values#
 ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
-ggsave("s3RNA_p-val.png")
-ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2) + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("*log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
-setwd("s3RNA/")
-devtools::use_data(miRReads,snoRReads)
-library(devtools)
-devtools::use_data(miRReads,snoRReads)
-install.packages(devtools)
-install.packages("devtools")
-library(devtools)
-devtools::use_data(miRReads,snoRReads)
-use_data(miRReads,snoRReads)
-devtools::create()
-create()
-library(usethis)
-create()
-create_package()
-create_package(path=".")
-cd..
-setwd("..")
-create_package(path="s3RNA")
-getwd()
-use_data(miRReads,snoRReads)
-use_package("DESeq2","Suggests")
-use_package("ggplot2","Suggests")
-?diamonds
+?women
+library(roxygen2)
+setwd('~/Documents/Manuscripts/Nuclear microRNA/s3RNA')
+roxygen2::reoxygenise()
+reoxygenise()
+roxygen2::roxygenise()
+roxygen2::roxygenise()
 q()

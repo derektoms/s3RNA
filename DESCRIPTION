@@ -8,10 +8,11 @@ Authors@R:
            email = "derek.toms@ucalgary.ca",
            comment = c(ORCID = "0000-0002-5114-7147"))
 Description: This is a dataset of miRNA and snoRNA reads from swine granulosa cells used in Pan, Toms, et al. (2020).
-License: What license it uses
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     DESeq2,
+    rnaseqGene,
     ggplot2
 RoxygenNote: 6.1.1
