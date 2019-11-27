@@ -17,7 +17,7 @@ source("https://install-github.me/derektoms/s3RNA")
 
 No packages imported by s3RNA, although it suggests rnaseqGene and DESeq2 for analysis and visualization.
 
-## Run the Shiny app
+## Example usage
 
 Two functions are provided with this package, each of which loads a specific dataset:
 ```r
