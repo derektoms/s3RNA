@@ -6,7 +6,7 @@
 #' @format miRNA contains unprocessed miRNA read counts (\code{miRNA$raw.count}) 
 #' and column data (\code{miRNA$col.dat}) that can be used for analysis.
 #'
-"miRNA"
+"miRReads"
 
 #' snoRNA read counts
 #'
@@ -16,4 +16,4 @@
 #' @format snoRNA contains unprocessed snoRNA read counts (\code{snoRNA$raw.count}) 
 #' and column data (\code{snoRNA$col.dat}) that can be used for analysis.
 #'
-"snoRNA"
+"snoRReads"

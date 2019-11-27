@@ -14,3 +14,4 @@ LazyData: true
 Suggests: 
     DESeq2,
     ggplot2
+RoxygenNote: 6.1.1
