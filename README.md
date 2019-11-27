@@ -35,16 +35,22 @@ library(ggplot)
 sno_mat <- snoRNA()
 sno <- DESeqDataSetFromMatrix(countData = sno_mat$raw.count, colData = sno_mat$col.dat, design=~size*subcell+batch)
 
+## Full linear model, two factors
 sno.d <- DESeq(sno)
 
-## Full linear model, two factors
-size <- results(dds1, contrast=c("size","small","large"))
-local <- results(dds1, contrast=c("subcell","cytosol","nucleus"))
-sno.loc <- local[which(local$padj<0.1),]
+size <- results(sno.d, contrast=c("size","small","large"))
+local <- results(sno.d, contrast=c("subcell","cytosol","nucleus"))
 
 ## Check distribution of p-values
-ggplot(as(local, "data.frame"), aes(x = pvalue)) 
-+ geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
+ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
+
+## Now plot the expression of those snoRNA with significant differences
+sno.loc <- local[which(local$padj<0.01),]
+locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]
+df <- data.frame(sno=rownames(locTopTable),lfc=locTopTable$log2FoldChange,se=locTopTable$lfcSE)
+p <- ggplot(df,aes(x=reorder(sno,lfc, sum),y=lfc))+ geom_col(aes(fill=reorder(sno,lfc, sum)),colour="black") + geom_errorbar(aes(ymin=lfc-se,ymax=lfc+se),width=0.2)
+p <- p + coord_flip() + labs(title="snoRNA", x="", y=expression("Cytoplasmic enrichment ("*log["2"]~"fold change)")) + theme(axis.text.y = element_text(size=8,hjust=0), axis.ticks.y = element_blank(), legend.position="none")
+p
 ```
 
 ---
