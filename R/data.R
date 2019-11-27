@@ -1,5 +1,4 @@
-NULL
-#' miRNA
+#' miRNA read counts
 #'
 #' Full microRNA sequencing data of the pig (Sus scrofa) ovarian follicle 
 #' used in Pan, Toms, et al. (2020).
@@ -9,7 +8,7 @@ NULL
 #'
 "miRNA"
 
-#' snoRNA
+#' snoRNA read counts
 #'
 #' Full small nucleolar RNA sequencing data of the pig (Sus scrofa) ovarian follicle 
 #' used in Pan, Toms, et al. (2020).

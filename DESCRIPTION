@@ -1,0 +1,16 @@
+Package: s3RNA
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Derek",
+           family = "Toms",
+           role = c("aut", "cre"),
+           email = "derek.toms@ucalgary.ca",
+           comment = c(ORCID = "0000-0002-5114-7147"))
+Description: This is a dataset of miRNA and snoRNA reads from swine granulosa cells used in Pan, Toms, et al. (2020).
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    DESeq2,
+    ggplot2
