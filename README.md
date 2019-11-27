@@ -1,9 +1,9 @@
 # s3RNA: Subcellular swine small RNA data
 
-This is the R pacakge for analysis of the granulosa small RNA sequencing dataset.
+This is a dataset of miRNA and snoRNA reads from swine granulosa cells used in Pan, Toms, et al. (2020).
 
 ## Installation
-s3RNA is a package for the R statisical computing language, and was built and tested on versions >= 3.5, and certain dependencies did not work during testing on 3.3. To install s3RNA, type either of these commands into the console:
+s3RNA is a dataset package for the R statisical computing language, and was built and tested on versions >= 3.5, and certain dependencies did not work during testing on 3.3. To install s3RNA, type either of these commands into the console:
 
 ``` r
 devtools::install_github("derektoms/s3RNA")
@@ -15,25 +15,16 @@ devtools::install_github("derektoms/s3RNA")
 source("https://install-github.me/derektoms/s3RNA")
 ```
 
-No packages imported by s3RNA, although it suggests rnaseqGene and DESeq2 for analysis and visualization.
+No packages imported by s3RNA, although we suggest rnaseqGene and DESeq2 for analysis and visualization.
 
 ## Example usage
 
-Two functions are provided with this package, each of which loads a specific dataset:
-```r
-miRNA()
-```
-and 
-```r
-snoRNA()
-```
-Each of these returns a list of two data frames containing unprocessed read counts (```raw.count```) and column data (```col.dat```). Analysis has been performed using the DESeq2 package, although additional approaches are possible. An example use would be to load the data, define an analysis model, compute significant differences and check the distribution of p-values. This is shown below:
+Loading this library will make these read tables available for analysis. Each is a list of two data frames containing unprocessed read counts (```raw.count```) and column data (```col.dat```). Analysis has been performed using the DESeq2 package, although additional approaches are possible. An example use would be to load the data, define an analysis model, compute significant differences and check the distribution of p-values. This is shown below:
 ```r
 library(s3RNA)
 library(ggplot)
 
-sno_mat <- snoRNA()
-sno <- DESeqDataSetFromMatrix(countData = sno_mat$raw.count, colData = sno_mat$col.dat, design=~size*subcell+batch)
+sno <- DESeqDataSetFromMatrix(countData = snoRReads$raw.count, colData = snoRReads$col.dat, design=~size*subcell+batch)
 
 ## Full linear model, two factors
 sno.d <- DESeq(sno)
