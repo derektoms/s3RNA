@@ -22,7 +22,8 @@ No packages imported by s3RNA, although we suggest rnaseqGene and DESeq2 for ana
 Loading this library will make two count tables available for analysis, ```miRReads``` and ```snoRReads```. Each is a list of two data frames containing unprocessed read counts (```raw.count```) and column data (```col.dat```). Analysis has been performed using the DESeq2 package, although additional approaches are possible. An example use would be to define an analysis model, compute significant differences, check the distribution of p-values, and plot expression sorted by fold change. This is shown below:
 ```r
 library(s3RNA)
-library(ggplot)
+library(ggplot2)
+library(DESeq2)
 
 sno <- DESeqDataSetFromMatrix(countData = snoRReads$raw.count, colData = snoRReads$col.dat, design=~size*subcell+batch)
 
