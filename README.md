@@ -34,7 +34,9 @@ local <- results(sno.d, contrast=c("subcell","cytosol","nucleus"))
 
 ## Check distribution of p-values
 ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
-
+```
+![snoRNA localization p-value histogram]()
+```r
 ## Now plot the expression of those snoRNA with significant differences
 sno.loc <- local[which(local$padj<0.01),]
 locTopTable<-sno.loc[order(sno.loc$log2FoldChange,decreasing=TRUE),]
