@@ -15,11 +15,36 @@ devtools::install_github("derektoms/s3RNA")
 source("https://install-github.me/derektoms/s3RNA")
 ```
 
-Packages imported by s3RNA are...
+No packages imported by s3RNA, although it suggests rnaseqGene and DESeq2 for analysis and visualization.
 
 ## Run the Shiny app
 
-Future description of the exported functions.
+Two functions are provided with this package, each of which loads a specific dataset:
+```r
+miRNA()
+```
+and 
+```r
+snoRNA()
+```
+Each of these returns a list of two data frames containing unprocessed read counts (```rraw.count```) and column data (```rcol.dat```). Analysis has been performed using the DESeq2 package, although additional approaches are possible. An example use would be to load the data, define an analysis model, compute significant differences and check the distribution of p-values. This is shown below:
+```r
+library(s3RNA)
+library(ggplot)
+
+sno_mat <- snoRNA()
+sno <- DESeqDataSetFromMatrix(countData = sno_mat$raw.count, colData = sno_mat$col.dat, design=~size*subcell+batch)
+
+sno.d <- DESeq(sno)
+
+## Full linear model, two factors
+size <- results(dds1, contrast=c("size","small","large"))
+local <- results(dds1, contrast=c("subcell","cytosol","nucleus"))
+sno.loc <- local[which(local$padj<0.1),]
+
+## Check distribution of p-values
+ggplot(as(local, "data.frame"), aes(x = pvalue)) + geom_histogram(binwidth = 0.01, fill = "darkslategray", boundary = 0)
+```
 
 ---
 
